@@ -12,12 +12,12 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
 public class ViewManager {
-    private AnchorPane mainPane;
+    private AnchorPane mainPane; // A Pane is a container class.
     private Scene mainScene;
     private Stage mainStage;
 
-    private static final int HEIGHT = 1080;
-    private static final int WIDTH = 720;
+    private static final double HEIGHT = 500;
+    private static final double WIDTH = 500;
     int count = 0;
 
     public ViewManager() {
@@ -25,8 +25,9 @@ public class ViewManager {
         mainStage = new Stage();
         mainScene = new Scene(mainPane, WIDTH, HEIGHT);
         mainStage.setScene(mainScene);
-        createButtons();
-        createBoard();
+        mainPane.getChildren().add(ChessBoard.createBoard(HEIGHT, 0, 0));
+     //   createButtons();
+     //   createBoard();
     }
 
     public Stage getMainStage() {

@@ -2,12 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="330a9c18-2fb6-4e94-af7b-8ddb66223206" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Chess/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Chess/src/sample/ChessBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/sample/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/ViewManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,5 +86,17 @@
       <updated>1625855696700</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
