@@ -16,8 +16,8 @@ public class ViewManager {
     private Scene mainScene;
     private Stage mainStage;
 
-    private static final int HEIGHT = 600;
-    private static final int WIDTH = 600;
+    private static final int HEIGHT = 1080;
+    private static final int WIDTH = 720;
     int count = 0;
 
     public ViewManager() {
