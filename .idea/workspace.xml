@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="330a9c18-2fb6-4e94-af7b-8ddb66223206" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Chess/src/Rook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chess/src/sample/Bishop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chess/src/sample/ChessPiece.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chess/src/sample/King.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chess/src/sample/Knight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chess/src/sample/Pawn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chess/src/sample/Queen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chess/src/sample/Rook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chess/src/sample/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chess/src/sample/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/ViewManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/sample/ChessPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/ChessPiece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/sample/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/Knight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ChessBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ChessBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ViewManager.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

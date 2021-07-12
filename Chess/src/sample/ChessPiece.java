@@ -34,9 +34,11 @@ public class ChessPiece {
     }
 
     private static Dictionary<String, ChessPiece> piecePositions = new Hashtable<>();
+
     public static Dictionary<String, ChessPiece> getPiecePositions() {
         return piecePositions;
     }
+
     public static void setBoard() {
         piecePositions.put("A8", new Rook("black"));
         piecePositions.put("B8", new Knight("black"));
@@ -46,11 +48,6 @@ public class ChessPiece {
         piecePositions.put("F8", new Bishop("black"));
         piecePositions.put("G8", new Knight("black"));
         piecePositions.put("H8", new Rook("black"));
-        for(byte i = 0; i < 8; i++) {
-            char letter = (char)('A' + (char)i);
-            piecePositions.put(letter + "7", new Pawn("black"));
-            piecePositions.put(letter + "2", new Pawn("whites"));
-        }
         piecePositions.put("A1", new Rook("white"));
         piecePositions.put("B1", new Knight("white"));
         piecePositions.put("C1", new Bishop("white"));
@@ -59,5 +56,28 @@ public class ChessPiece {
         piecePositions.put("F1", new Bishop("white"));
         piecePositions.put("G1", new Knight("white"));
         piecePositions.put("H1", new Rook("white"));
+        for(byte i = 0; i < 8; i++) {
+            char letter = (char)('A' + (char)i);
+            piecePositions.put(letter + "7", new Pawn("black"));
+            piecePositions.put(letter + "2", new Pawn("whites"));
+        }
+    }
+    protected static String byteArrToString(byte[] arr) {
+        char letter = (char)('A' + (char)arr[0]);
+        return letter + "" + arr[1];
+    }
+    protected static byte[] stringToByteArr(String s) {
+        char[] cArr = s.toCharArray();
+        return new byte[] { Byte.valueOf(String.valueOf(cArr[0])), Byte.valueOf(String.valueOf(cArr[1])) };
+    }
+    protected static boolean isValidMove(byte[] newPosition, String side) {
+        if(newPosition[0] < 0 || newPosition[0] > 7 || newPosition[1] < 0 || newPosition[1] > 7) {
+            return false;
+        }
+        if(piecePositions.get(byteArrToString(newPosition)) != null) {
+            ChessPiece pieceOnLocation = piecePositions.get(byteArrToString(newPosition));
+            return pieceOnLocation.getSide() == side ? false : true;
+        }
+        return true;
     }
 }
