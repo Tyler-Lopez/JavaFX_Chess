@@ -25,6 +25,7 @@ public class ViewManager {
         mainStage = new Stage();
         mainScene = new Scene(mainPane, WIDTH, HEIGHT);
         mainStage.setScene(mainScene);
+
         mainPane.getChildren().add(ChessBoard.createBoard(HEIGHT, 0, 0));
      //   createButtons();
      //   createBoard();
