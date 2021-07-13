@@ -7,6 +7,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        ChessPiece.setBoard();
         ViewManager manager = new ViewManager();
         primaryStage = manager.getMainStage();
         primaryStage.show();
@@ -17,3 +18,4 @@ public class Main extends Application {
         launch(args);
     }
 }
+ 

@@ -51,8 +51,7 @@ public class ChessBoard {
 
         double sizeOfEachTile = ((side * 0.95) / chessBoard.length);
 
-        // Initialize the board with pieces in all positions.
-        ChessPiece.setBoard();
+
 
         for (int i = 0; i < chessBoard.length; i++) {
             for (int j = 0; j < chessBoard[i].length; j++) {
@@ -75,104 +74,6 @@ public class ChessBoard {
                 int finalJ = j;
                 Text text = new Text();
                 if (pieceAtPosition != null) {
-                    if (pieceAtPosition instanceof King) {
-                        King king = (King) pieceAtPosition;
-                        Button button = new Button();
-                        button.setMinWidth(sizeOfEachTile);
-                        button.setMinHeight(sizeOfEachTile);
-                        button.setBackground(Background.EMPTY);
-                        button.setText(pieceAtPosition.getSymbol()+"");
-                        button.setFont(new Font("Verdana", 20));
-                        button.setLayoutX(x + (side * 0.025) + (i * sizeOfEachTile));
-                        button.setLayoutY(x + (side * 0.025) + (j * sizeOfEachTile));
-                        board.getChildren().add(button);
-                    }
-                    if (pieceAtPosition instanceof Queen) {
-                        Queen queen = (Queen) pieceAtPosition;
-                        Button button = new Button();
-                        button.setMinWidth(sizeOfEachTile);
-                        button.setMinHeight(sizeOfEachTile);
-                        button.setBackground(Background.EMPTY);
-                        button.setText(pieceAtPosition.getSymbol()+"");
-                        button.setFont(new Font("Verdana", 20));
-                        button.setLayoutX(x + (side * 0.025) + (i * sizeOfEachTile));
-                        button.setLayoutY(x + (side * 0.025) + (j * sizeOfEachTile));
-                        board.getChildren().add(button);
-                    }
-                    if (pieceAtPosition instanceof Bishop) {
-                        Bishop bishop = (Bishop) pieceAtPosition;
-                        Button button = new Button();
-                        button.setMinWidth(sizeOfEachTile);
-                        button.setMinHeight(sizeOfEachTile);
-                        button.setBackground(Background.EMPTY);
-                        button.setText(pieceAtPosition.getSymbol()+"");
-                        button.setFont(new Font("Verdana", 20));
-                        button.setLayoutX(x + (side * 0.025) + (i * sizeOfEachTile));
-                        button.setLayoutY(x + (side * 0.025) + (j * sizeOfEachTile));
-                        board.getChildren().add(button);
-                    }
-                    if (pieceAtPosition instanceof Rook) {
-                        Rook rook = (Rook) pieceAtPosition;
-                        Button button = new Button();
-                        button.setMinWidth(sizeOfEachTile);
-                        button.setMinHeight(sizeOfEachTile);
-                        button.setBackground(Background.EMPTY);
-                        button.setText(pieceAtPosition.getSymbol()+"");
-                        button.setFont(new Font("Verdana", 20));
-                        button.setLayoutX(x + (side * 0.025) + (i * sizeOfEachTile));
-                        button.setLayoutY(x + (side * 0.025) + (j * sizeOfEachTile));
-                        board.getChildren().add(button);
-                    }
-                    if (pieceAtPosition instanceof Pawn) {
-                        Pawn pawn = (Pawn) pieceAtPosition;
-                        Button button = new Button();
-                        button.setMinWidth(sizeOfEachTile);
-                        button.setMinHeight(sizeOfEachTile);
-                        button.setBackground(Background.EMPTY);
-                        button.setText(pieceAtPosition.getSymbol()+"");
-                        button.setFont(new Font("Verdana", 20));
-                        button.setLayoutX(x + (side * 0.025) + (i * sizeOfEachTile));
-                        button.setLayoutY(x + (side * 0.025) + (j * sizeOfEachTile));
-                        board.getChildren().add(button);
-                        button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                            @Override
-                            public void handle(MouseEvent mouseEvent) {
-                                button.setBackground(new Background(new BackgroundFill(Color.hsb(270, 1.0, 1.0, 0.2), CornerRadii.EMPTY, Insets.EMPTY)));
-                            }
-                        });
-                        button.setOnMouseExited(new EventHandler<MouseEvent>() {
-                            @Override
-                            public void handle(MouseEvent mouseEvent) {
-                                button.setBackground(Background.EMPTY);
-                            }
-                        });
-
-                        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                            @Override
-                            public void handle(MouseEvent mouseEvent) {
-                                hLightB.getChildren().clear();
-                                ArrayList<String> moves = new ArrayList<>();
-                                moves = pawn.getAcceptableMovements(position);
-                                Paint c = Color.hsb(270, 1.0, 1.0, 0.3);
-
-                                for (String move : moves) {
-
-
-                                    char[] tmp = ChessPiece.stringToCharArr(move);
-                                    double xShift = x + (side * 0.025) + ((tmp[0] - 'A') * sizeOfEachTile);
-                                    double yShift = x + (side * 0.025) + ((tmp[1] - '1') * sizeOfEachTile);
-
-
-                                    Rectangle hLight = createRectangle(sizeOfEachTile, xShift, yShift, c);
-                                    hLight.setLayoutX(xShift);
-                                    hLight.setLayoutY(yShift);
-                                    hLightB.getChildren().add(hLight);
-                                }
-                                hLightB.getChildren().add(createRectangle(sizeOfEachTile, x + (side * 0.025) + (finalI * sizeOfEachTile),x + (side * 0.025) + (finalJ * sizeOfEachTile), c));
-
-                            }
-                        });
-                    }
                     // If the piece is a knight, create a Pink square on all legal moves.
                     if (pieceAtPosition instanceof Knight) {
                         // Cast the piece to a Knight for the sake of keeping track easier
@@ -212,12 +113,23 @@ public class ChessBoard {
                                     char[] tmp = ChessPiece.stringToCharArr(move);
                                     double xShift = x + (side * 0.025) + ((tmp[0] - 'A') * sizeOfEachTile);
                                     double yShift = x + (side * 0.025) + ((tmp[1] - '1') * sizeOfEachTile);
-
-
-                                    Rectangle hLight = createRectangle(sizeOfEachTile, xShift, yShift, c);
+                                    Button hLight = new Button();
+                                    hLight.setMinHeight(sizeOfEachTile);
+                                    hLight.setMinWidth(sizeOfEachTile);
+                                 //   hLight.setPrefHeight(sizeOfEachTile);
                                     hLight.setLayoutX(xShift);
                                     hLight.setLayoutY(yShift);
+
+                                    hLight.setBackground(new Background(new BackgroundFill(c, CornerRadii.EMPTY, Insets.EMPTY)));
+                                    hLight.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                                        @Override
+                                        public void handle(MouseEvent mouseEvent) {
+                                            ChessPiece.movePiece(position, move, pieceAtPosition);
+                                            createBoard(side,x,y);
+                                        }
+                                    });
                                     hLightB.getChildren().add(hLight);
+
                                 }
                                 hLightB.getChildren().add(createRectangle(sizeOfEachTile, x + (side * 0.025) + (finalI * sizeOfEachTile),x + (side * 0.025) + (finalJ * sizeOfEachTile), c));
 

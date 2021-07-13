@@ -62,6 +62,10 @@ public class ChessPiece {
             piecePositions.put(letter + "2", new Pawn("white"));
         }
     }
+    public static void movePiece(String current, String newPosition, ChessPiece piece) {
+        piecePositions.remove(current);
+        piecePositions.put(newPosition, piece);
+    }
     protected static String charArrToString(char[] arr) {
         return arr[0]+""+arr[1];
     }

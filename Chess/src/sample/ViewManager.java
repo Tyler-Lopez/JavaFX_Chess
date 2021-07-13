@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -25,8 +26,9 @@ public class ViewManager {
         mainStage = new Stage();
         mainScene = new Scene(mainPane, WIDTH, HEIGHT);
         mainStage.setScene(mainScene);
-
-        mainPane.getChildren().add(ChessBoard.createBoard(HEIGHT, 0, 0));
+        // Initialize the board with pieces in all positions.
+        Node chessboard = ChessBoard.createBoard(HEIGHT, 0 ,0);
+        mainPane.getChildren().add(chessboard);
      //   createButtons();
      //   createBoard();
     }
