@@ -71,6 +71,7 @@ public class ChessPiece {
 
     public static boolean movePiece(String current, String newPosition, ChessPiece piece) {
         piecePositions.remove(current);
+
         boolean toReturn = false;
         if(piecePositions.get(newPosition) != null) {
             System.out.println(piecePositions.get(newPosition).getName()+"HAS BEEN TAKEN");

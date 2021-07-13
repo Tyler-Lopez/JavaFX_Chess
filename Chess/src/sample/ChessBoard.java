@@ -25,7 +25,7 @@ public class ChessBoard {
     private static final int COLUMNS = 8;
 
     static String[][] chessBoard = new String[ROWS][COLUMNS];
-    private static HashMap<String, Button> buttonInPosition = new HashMap<>();
+    public static HashMap<String, Button> buttonInPosition = new HashMap<>();
 
     public static Node createBoard(double side, double x, double y) {
         // Create a group to which all board elements will be added as children of.
@@ -143,10 +143,16 @@ public class ChessBoard {
                                     public void handle(MouseEvent mouseEvent) {
                                         System.out.println("Position:"+knight.CurrentPosition+"move"+move);
                                         ChessPiece.movePiece(knight.CurrentPosition, move, pieceAtPosition);
+                                        buttonInPosition.remove(knight.CurrentPosition);
                                         knight.CurrentPosition = move;
                                         button.setLayoutX(hLight.getLayoutX());
                                         button.setLayoutY(hLight.getLayoutY());
                                         subpieces.getChildren().clear();
+                                        for(String k : buttonInPosition.keySet()) {
+                                            System.out.println(k + "KEY");
+                                            System.out.println("CURRENT POSITION: " + knight.CurrentPosition);
+                                        }
+                                        buttonInPosition.put(move, button);
                                     }
                                 });
                                 subpieces.getChildren().add(hLight);
