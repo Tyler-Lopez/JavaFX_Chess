@@ -69,9 +69,17 @@ public class ChessPiece {
         }
     }
 
-    public static void movePiece(String current, String newPosition, ChessPiece piece) {
+    public static boolean movePiece(String current, String newPosition, ChessPiece piece) {
         piecePositions.remove(current);
+        boolean toReturn = false;
+        if(piecePositions.get(newPosition) != null) {
+            System.out.println(piecePositions.get(newPosition).getName()+"HAS BEEN TAKEN");
+            piecePositions.remove(newPosition);
+            toReturn = true;
+
+        }
         piecePositions.put(newPosition, piece);
+        return toReturn;
     }
 
     protected static String charArrToString(char[] arr) {

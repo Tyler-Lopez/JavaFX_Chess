@@ -17,6 +17,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class ChessBoard {
@@ -84,6 +85,8 @@ public class ChessBoard {
                 System.out.println(position);
                 ChessPiece pieceAtPosition = ChessPiece.getPiecePositions().get(position);
                 if(pieceAtPosition == null) continue;
+                HashMap<Button, ChessPiece> dic = new HashMap<>();
+
                 if(pieceAtPosition instanceof Pawn) {
                     System.out.println("HERE");
 
@@ -99,6 +102,7 @@ public class ChessBoard {
                     button.setLayoutX(x + (side * 0.025) + (i * sizeOfEachTile));
                     button.setLayoutY(x + (side * 0.025) + (j * sizeOfEachTile));
                     pieces.getChildren().add(button);
+                    dic.put(button, pieceAtPosition);
                     button.setOnMouseEntered(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent mouseEvent) {
@@ -222,6 +226,7 @@ public class ChessBoard {
                                         button.setLayoutX(hLight.getLayoutX());
                                         button.setLayoutY(hLight.getLayoutY());
                                         subpieces.getChildren().clear();
+                                        System.out.println(pieces.getChildren());
                                     }
                                 });
                                 subpieces.getChildren().add(hLight);
@@ -237,81 +242,6 @@ public class ChessBoard {
         }
         pieces.getChildren().add(subpieces);
         return pieces;
-                /*
-                int finalI = i;
-                int finalJ = j;
-                Text text = new Text();
-              if (pieceAtPosition != null) {
-                    // If the piece is a knight, create a Pink square on all legal moves.
-                    if (pieceAtPosition instanceof Knight) {
-                        // Cast the piece to a Knight for the sake of keeping track easier
-                        Knight knight = (Knight) pieceAtPosition;
-                        Button button = new Button();
-                        button.setMinWidth(sizeOfEachTile);
-                        button.setMinHeight(sizeOfEachTile);
-                        button.setBackground(Background.EMPTY);
-                        button.setText(pieceAtPosition.getSymbol()+"");
-                        button.setFont(new Font("Verdana", 20));
-                        button.setLayoutX(x + (side * 0.025) + (i * sizeOfEachTile));
-                        button.setLayoutY(x + (side * 0.025) + (j * sizeOfEachTile));
-                        board.getChildren().add(button);
-                        button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                            @Override
-                            public void handle(MouseEvent mouseEvent) {
-                                button.setBackground(new Background(new BackgroundFill(Color.hsb(270, 1.0, 1.0, 0.2), CornerRadii.EMPTY, Insets.EMPTY)));
-                            }
-                        });
-                        button.setOnMouseExited(new EventHandler<MouseEvent>() {
-                            @Override
-                            public void handle(MouseEvent mouseEvent) {
-                                button.setBackground(Background.EMPTY);
-                            }
-                        });
-                        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                            @Override
-                            public void handle(MouseEvent mouseEvent) {
-                                hLightB.getChildren().clear();
-                                ArrayList<String> moves = new ArrayList<>();
-                                moves = knight.getAcceptableMovements(position);
-                                Paint c = Color.hsb(270, 1.0, 1.0, 0.3);
-
-                                for (String move : moves) {
-
-
-                                    char[] tmp = ChessPiece.stringToCharArr(move);
-                                    double xShift = x + (side * 0.025) + ((tmp[0] - 'A') * sizeOfEachTile);
-                                    double yShift = x + (side * 0.025) + ((tmp[1] - '1') * sizeOfEachTile);
-                                    Button hLight = new Button();
-                                    hLight.setMinHeight(sizeOfEachTile);
-                                    hLight.setMinWidth(sizeOfEachTile);
-                                 //   hLight.setPrefHeight(sizeOfEachTile);
-                                    hLight.setLayoutX(xShift);
-                                    hLight.setLayoutY(yShift);
-
-                                    hLight.setBackground(new Background(new BackgroundFill(c, CornerRadii.EMPTY, Insets.EMPTY)));
-                                    hLight.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                                        @Override
-                                        public void handle(MouseEvent mouseEvent) {
-                                            System.out.println("Position:"+position+"move"+move);
-                                            ChessPiece.movePiece(position, move, pieceAtPosition);
-                                            button.setLayoutX(hLight.getLayoutX());
-                                            button.setLayoutY(hLight.getLayoutY());
-                                        }
-                                    });
-                                    hLightB.getChildren().add(hLight);
-
-                                }
-                                hLightB.getChildren().add(createRectangle(sizeOfEachTile, x + (side * 0.025) + (finalI * sizeOfEachTile),x + (side * 0.025) + (finalJ * sizeOfEachTile), c));
-
-                            }
-                        });
-
-                        // Iterate through each of the returned moves.
-
-
-                    }
-                    // " " + position + " " + charArr[0] + ":" + charArr[1] debug info
-                }*/
     }
 
     private static String returnActivePosition(byte[] arr) {
