@@ -21,6 +21,12 @@ public class Pawn extends ChessPiece {
             if(!isAnyPieceHere(new char[] {activePosition[0], (char)(activePosition[1] + 1)})) {
                 if(isValidMove(new char[] {activePosition[0], (char)(activePosition[1] + 1)},getSide())) toReturn.add(activePosition[0] + "" + (char)(activePosition[1] + 1));
             }
+            if(isEnemyPieceHere(new char[] {(char)(activePosition[0]+1), (char)(activePosition[1] + 1)},getSide())) {
+                toReturn.add((char)(activePosition[0]+1)+""+(char)(activePosition[1]+1));
+            }
+            if(isEnemyPieceHere(new char[] {(char)(activePosition[0]-1), (char)(activePosition[1] + 1)},getSide())) {
+                toReturn.add((char)(activePosition[0]-1)+""+(char)(activePosition[1]+1));
+            }
 
         } else {
             // Is the pawn in the initial position?
@@ -30,11 +36,14 @@ public class Pawn extends ChessPiece {
             if(!isAnyPieceHere(new char[] {activePosition[0], (char)(activePosition[1] - 1)})) {
                 if(isValidMove(new char[] {activePosition[0], (char)(activePosition[1] - 1)},getSide())) toReturn.add(activePosition[0] + "" + (char)(activePosition[1] - 1));
             }
+            if(isEnemyPieceHere(new char[] {(char)(activePosition[0]+1), (char)(activePosition[1] - 1)},getSide())) {
+                toReturn.add((char)(activePosition[0]+1)+""+(char)(activePosition[1]-1));
+            }
+            if(isEnemyPieceHere(new char[] {(char)(activePosition[0]-1), (char)(activePosition[1] - 1)},getSide())) {
+                toReturn.add((char)(activePosition[0]-1)+""+(char)(activePosition[1]-1));
+            }
+
         }
-        // THIS DOES NOT YET COVER THE PAWN BEING ABLE TO MOVE DIAGONALLY!!!!
-
-
-
 
         // Create a HashSet<String> which acceptable movements will be added to.
         // Convert the provided String to a char[]

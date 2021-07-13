@@ -77,7 +77,6 @@ public class ChessPiece {
             System.out.println(piecePositions.get(newPosition).getName()+"HAS BEEN TAKEN");
             piecePositions.remove(newPosition);
             toReturn = true;
-
         }
         piecePositions.put(newPosition, piece);
         return toReturn;

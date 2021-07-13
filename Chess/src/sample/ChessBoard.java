@@ -33,13 +33,13 @@ public class ChessBoard {
         // Initialize an array which will be used to put all highlighted squares, finally made a child of board at the end of the method.
         Group hLightB = new Group();
 
-        Stop[] stops = new Stop[] { new Stop(0, Color.web("#4B4B4B")), new Stop(1, Color.web("#1B1B1B"))};
+        Stop[] stops = new Stop[]{new Stop(0, Color.web("#4B4B4B")), new Stop(1, Color.web("#1B1B1B"))};
         LinearGradient lg1 = new LinearGradient(1, 1, 1, 0, true, CycleMethod.NO_CYCLE, stops);
         // Color of light pieces
-        Stop[] stopsLight = new Stop[] { new Stop(0, Color.web("#f0d9b7")), new Stop(1, Color.web("#Bea884"))};
+        Stop[] stopsLight = new Stop[]{new Stop(0, Color.web("#f0d9b7")), new Stop(1, Color.web("#Bea884"))};
         LinearGradient lightBG = new LinearGradient(1, 1, 1, 0, true, CycleMethod.NO_CYCLE, stopsLight);
         // Color of dark pieces
-        Stop[] stopsDark = new Stop[] { new Stop(0, Color.web("#b48866")), new Stop(1, Color.web("#977052"))};
+        Stop[] stopsDark = new Stop[]{new Stop(0, Color.web("#b48866")), new Stop(1, Color.web("#977052"))};
         LinearGradient darkBG = new LinearGradient(1, 1, 1, 0, true, CycleMethod.NO_CYCLE, stopsDark);
 
         // The black gradient border of the chessboard
@@ -80,169 +80,108 @@ public class ChessBoard {
         Group subpieces = new Group();
         double sizeOfEachTile = ((side * 0.95) / chessBoard.length);
 
-        for(int i = 0; i < chessBoard.length; i ++) {
-            for(int j = 0; j < chessBoard[0].length; j++) {
+        for (int i = 0; i < chessBoard.length; i++) {
+            for (int j = 0; j < chessBoard[0].length; j++) {
                 String position = returnActivePosition(new byte[]{(byte) i, (byte) (j + 1)});
                 System.out.println(position);
                 ChessPiece pieceAtPosition = ChessPiece.getPiecePositions().get(position);
-                if(pieceAtPosition == null) continue;
-                if(pieceAtPosition instanceof Pawn) {
-                    System.out.println("HERE");
+                if (pieceAtPosition == null) continue;
+                // Give the given button the appropriate characteristics for the piece it is.
 
-                    Pawn knight = (Pawn) pieceAtPosition;
-                    knight.CurrentPosition = position;
-                    Button button = new Button();
-                    button.setMinWidth(sizeOfEachTile);
-                    button.setMinHeight(sizeOfEachTile);
-                    button.setBackground(Background.EMPTY);
-                    button.setText(pieceAtPosition.getSymbol()+"");
-                    button.setFont(new Font("Verdana", 20));
-                    if(knight.getSide().equalsIgnoreCase("white")) button.setTextFill(Paint.valueOf("WHITE"));
-                    button.setLayoutX(x + (side * 0.025) + (i * sizeOfEachTile));
-                    button.setLayoutY(x + (side * 0.025) + (j * sizeOfEachTile));
-                    pieces.getChildren().add(button);
-                    buttonInPosition.put(position, button);
-                    button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            button.setBackground(new Background(new BackgroundFill(Color.hsb(270, 1.0, 1.0, 0.2), CornerRadii.EMPTY, Insets.EMPTY)));
+                if (!(pieceAtPosition instanceof Bishop) && !(pieceAtPosition instanceof King) &&  !(pieceAtPosition instanceof Pawn) && !(pieceAtPosition instanceof Rook)  && !(pieceAtPosition instanceof Knight)) continue;
+
+                pieceAtPosition.CurrentPosition = position;
+
+
+                Button button = new Button();
+                button.setMinWidth(sizeOfEachTile);
+                button.setMinHeight(sizeOfEachTile);
+                button.setBackground(Background.EMPTY);
+                button.setText(pieceAtPosition.getSymbol() + "");
+                button.setFont(new Font("Verdana", 20));
+                if (pieceAtPosition.getSide().equalsIgnoreCase("white")) button.setTextFill(Paint.valueOf("WHITE"));
+                button.setLayoutX(x + (side * 0.025) + (i * sizeOfEachTile));
+                button.setLayoutY(x + (side * 0.025) + (j * sizeOfEachTile));
+                pieces.getChildren().add(button);
+                buttonInPosition.put(position, button);
+                button.setOnMouseEntered(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+                        button.setBackground(new Background(new BackgroundFill(Color.hsb(270, 1.0, 1.0, 0.2), CornerRadii.EMPTY, Insets.EMPTY)));
+                    }
+                });
+                button.setOnMouseExited(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+                        button.setBackground(Background.EMPTY);
+                    }
+                });
+                button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+                        ArrayList<String> moves = new ArrayList<>();
+
+                        subpieces.getChildren().clear();
+                        Paint c = Color.hsb(270, 1.0, 1.0, 0.3);
+                        if (pieceAtPosition instanceof Pawn) {
+                            Pawn pawnTmp = (Pawn) pieceAtPosition;
+                            moves = pawnTmp.getAcceptableMovements(pawnTmp.CurrentPosition);
+                        } else if (pieceAtPosition instanceof Knight) {
+                            Knight knightTmp = (Knight) pieceAtPosition;
+                            moves = knightTmp.getAcceptableMovements(knightTmp.CurrentPosition);
+                        } else if (pieceAtPosition instanceof Rook) {
+                            Rook knightTmp = (Rook) pieceAtPosition;
+                            moves = knightTmp.getAcceptableMovements(knightTmp.CurrentPosition);
+                        } else if (pieceAtPosition instanceof Bishop) {
+                            Bishop knightTmp = (Bishop) pieceAtPosition;
+                            moves = knightTmp.getAcceptableMovements(knightTmp.CurrentPosition);
+                        } else if (pieceAtPosition instanceof King) {
+                            King knightTmp = (King) pieceAtPosition;
+                            moves = knightTmp.getAcceptableMovements(knightTmp.CurrentPosition);
                         }
-                    });
-                    button.setOnMouseExited(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            button.setBackground(Background.EMPTY);
-                        }
-                    });
-                    int finalI = i;
-                    int finalJ = j;
-                    button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            subpieces.getChildren().clear();
-                            ArrayList<String> moves = new ArrayList<>();
-                            moves = knight.getAcceptableMovements(knight.CurrentPosition);
-                            Paint c = Color.hsb(270, 1.0, 1.0, 0.3);
+                        ArrayList<String> finalMoves = moves;
+                        for (String move : finalMoves) {
+                            char[] tmp = ChessPiece.stringToCharArr(move);
+                            double xShift = x + (side * 0.025) + ((tmp[0] - 'A') * sizeOfEachTile);
+                            double yShift = x + (side * 0.025) + ((tmp[1] - '1') * sizeOfEachTile);
+                            Button hLight = new Button();
+                            hLight.setMinHeight(sizeOfEachTile);
+                            hLight.setMinWidth(sizeOfEachTile);
+                            //   hLight.setPrefHeight(sizeOfEachTile);
+                            hLight.setLayoutX(xShift);
+                            hLight.setLayoutY(yShift);
 
-                            for (String move : moves) {
+                            hLight.setBackground(new Background(new BackgroundFill(c, CornerRadii.EMPTY, Insets.EMPTY)));
+                            hLight.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                                @Override
+                                public void handle(MouseEvent mouseEvent) {
+                                    // DEBUG TEXT
+                                    System.out.println("Position:" + pieceAtPosition.CurrentPosition + "move" + move);
+                                    // Invoke the static movePiece method of ChessPiece class.
+                                    System.out.println(ChessPiece.movePiece(pieceAtPosition.CurrentPosition, move, pieceAtPosition));
+                                    System.out.println("JUST AFTER REMOVER");
+                              //      pieces.getChildren().remove(buttonInPosition.get(pieceAtPosition.CurrentPosition));
+                                   System.out.println(pieces.getChildren().remove(buttonInPosition.get(move)));
+                                    buttonInPosition.remove(pieceAtPosition.CurrentPosition);
+                                    pieceAtPosition.CurrentPosition = move;
+                                    button.setLayoutX(hLight.getLayoutX());
+                                    button.setLayoutY(hLight.getLayoutY());
+                                    buttonInPosition.put(pieceAtPosition.CurrentPosition, button);
 
+                                    subpieces.getChildren().clear();
+                                    System.out.println(move);
 
-                                char[] tmp = ChessPiece.stringToCharArr(move);
-                                double xShift = x + (side * 0.025) + ((tmp[0] - 'A') * sizeOfEachTile);
-                                double yShift = x + (side * 0.025) + ((tmp[1] - '1') * sizeOfEachTile);
-                                Button hLight = new Button();
-                                hLight.setMinHeight(sizeOfEachTile);
-                                hLight.setMinWidth(sizeOfEachTile);
-                                //   hLight.setPrefHeight(sizeOfEachTile);
-                                hLight.setLayoutX(xShift);
-                                hLight.setLayoutY(yShift);
-
-                                hLight.setBackground(new Background(new BackgroundFill(c, CornerRadii.EMPTY, Insets.EMPTY)));
-                                hLight.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                                    @Override
-                                    public void handle(MouseEvent mouseEvent) {
-                                        System.out.println("Position:"+knight.CurrentPosition+"move"+move);
-                                        ChessPiece.movePiece(knight.CurrentPosition, move, pieceAtPosition);
-                                        buttonInPosition.remove(knight.CurrentPosition);
-                                        knight.CurrentPosition = move;
-                                        button.setLayoutX(hLight.getLayoutX());
-                                        button.setLayoutY(hLight.getLayoutY());
-                                        subpieces.getChildren().clear();
-                                        for(String k : buttonInPosition.keySet()) {
-                                            System.out.println(k + "KEY");
-                                            System.out.println("CURRENT POSITION: " + knight.CurrentPosition);
-                                        }
-                                        buttonInPosition.put(move, button);
-                                    }
-                                });
-                                subpieces.getChildren().add(hLight);
-
-                            }
-                            //      subpieces.getChildren().add(createRectangle(sizeOfEachTile, x + (side * 0.025) + (finalI * sizeOfEachTile),x + (side * 0.025) + (finalJ * sizeOfEachTile), c));
-
-                        }
-                    });
-                }
-                if(pieceAtPosition instanceof Knight) {
-                    // Cast the piece to a Knight
-                    System.out.println("HERE");
-
-                    Knight knight = (Knight) pieceAtPosition;
-                    knight.CurrentPosition = position;
-                    Button button = new Button();
-                    button.setMinWidth(sizeOfEachTile);
-                    button.setMinHeight(sizeOfEachTile);
-                    button.setBackground(Background.EMPTY);
-                    button.setText(pieceAtPosition.getSymbol()+"");
-                    button.setFont(new Font("Verdana", 20));
-                    button.setLayoutX(x + (side * 0.025) + (i * sizeOfEachTile));
-                    button.setLayoutY(x + (side * 0.025) + (j * sizeOfEachTile));
-                    if(knight.getSide().equalsIgnoreCase("white")) button.setTextFill(Paint.valueOf("WHITE"));
-
-                    pieces.getChildren().add(button);
-                    button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            button.setBackground(new Background(new BackgroundFill(Color.hsb(270, 1.0, 1.0, 0.2), CornerRadii.EMPTY, Insets.EMPTY)));
-                        }
-                    });
-                    button.setOnMouseExited(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            button.setBackground(Background.EMPTY);
-                        }
-                    });
-                    int finalI = i;
-                    int finalJ = j;
-                    button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            subpieces.getChildren().clear();
-                            ArrayList<String> moves = new ArrayList<>();
-                            moves = knight.getAcceptableMovements(knight.CurrentPosition);
-                            Paint c = Color.hsb(270, 1.0, 1.0, 0.3);
-                            char[] tmp2 = ChessPiece.stringToCharArr(knight.CurrentPosition);
-                            double xShifttmp = x + (side * 0.025) + ((tmp2[0] - 'A') * sizeOfEachTile);
-                            double yShifttmp = x + (side * 0.025) + ((tmp2[1] - '1') * sizeOfEachTile);
-                            subpieces.getChildren().add(createRectangle(sizeOfEachTile,xShifttmp,yShifttmp,c));
-
-
-                            for (String move : moves) {
-
-
-                                char[] tmp = ChessPiece.stringToCharArr(move);
-                                double xShift = x + (side * 0.025) + ((tmp[0] - 'A') * sizeOfEachTile);
-                                double yShift = x + (side * 0.025) + ((tmp[1] - '1') * sizeOfEachTile);
-
-                                Button hLight = new Button();
-                                hLight.setMinHeight(sizeOfEachTile);
-                                hLight.setMinWidth(sizeOfEachTile);
-                                //   hLight.setPrefHeight(sizeOfEachTile);
-                                hLight.setLayoutX(xShift);
-                                hLight.setLayoutY(yShift);
-
-                                hLight.setBackground(new Background(new BackgroundFill(c, CornerRadii.EMPTY, Insets.EMPTY)));
-                                hLight.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                                    @Override
-                                    public void handle(MouseEvent mouseEvent) {
-                                        System.out.println("Position:"+knight.CurrentPosition+"move"+move);
-                                        ChessPiece.movePiece(knight.CurrentPosition, move, pieceAtPosition);
-                                        knight.CurrentPosition = move;
-                                        button.setLayoutX(hLight.getLayoutX());
-                                        button.setLayoutY(hLight.getLayoutY());
-                                        subpieces.getChildren().clear();
-                                        System.out.println(move);
-                                        System.out.println(pieces.getChildren().remove(buttonInPosition.get(move)));
-                                    }
-                                });
-                                subpieces.getChildren().add(hLight);
-
-                            }
-                      //      subpieces.getChildren().add(createRectangle(sizeOfEachTile, x + (side * 0.025) + (finalI * sizeOfEachTile),x + (side * 0.025) + (finalJ * sizeOfEachTile), c));
+                                   // System.out.println(pieces.getChildren().remove(buttonInPosition.get(move)));
+                                }
+                            });
+                            subpieces.getChildren().add(hLight);
 
                         }
-                    });
-                }
+                        //      subpieces.getChildren().add(createRectangle(sizeOfEachTile, x + (side * 0.025) + (finalI * sizeOfEachTile),x + (side * 0.025) + (finalJ * sizeOfEachTile), c));
+
+                    }
+                });
+
 
             }
         }
