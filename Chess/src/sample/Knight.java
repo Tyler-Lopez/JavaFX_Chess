@@ -8,7 +8,7 @@ public class Knight extends ChessPiece {
     private byte[][] prospectiveMoves = new byte[][]{{1,2},{-1,2},{2,1},{2,-1},{1,-2},{-1,-2},{-2,1},{-2,-1}};
 
     public Knight(String side) {
-        super.setSide(side);
+        super(side);
         super.setName("Knight");
         super.setSymbol('N');
     }

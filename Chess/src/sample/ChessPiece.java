@@ -4,41 +4,47 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 public class ChessPiece {
-    private String side;
-    private String name;
-    private char symbol;
+    // Global Variables
+    public String CurrentPosition;
+    private String Side;
+    private String Name;
+    private char Symbol;
+    private static Dictionary<String, ChessPiece> piecePositions = new Hashtable<>();
 
-    public ChessPiece() {
-
-    }
+    // Constructors
     public ChessPiece(String side) {
-        this.side = side;
+        this.Side = side;
     }
+
+    // Getter and Setter Methods
     public void setSide(String side) {
-        this.side = side;
+        this.Side = side;
     }
+
     public void setName(String name) {
-        this.name = name;
+        this.Name = name;
     }
+
     public void setSymbol(char symbol) {
-        this.symbol = symbol;
+        this.Symbol = symbol;
     }
     public char getSymbol() {
-        return symbol;
-    }
-    public String getName() {
-        return name;
-    }
-    public String getSide() {
-     return side;
+        return Symbol;
     }
 
-    private static Dictionary<String, ChessPiece> piecePositions = new Hashtable<>();
+    public String getName() {
+        return Name;
+    }
+
+    public String getSide() {
+        return Side;
+    }
 
     public static Dictionary<String, ChessPiece> getPiecePositions() {
         return piecePositions;
     }
 
+    // Initialize the board with pieces assigned to each side in appropriate positinos
     public static void setBoard() {
         piecePositions.put("A8", new Rook("black"));
         piecePositions.put("B8", new Knight("black"));
@@ -56,40 +62,46 @@ public class ChessPiece {
         piecePositions.put("F1", new Bishop("white"));
         piecePositions.put("G1", new Knight("white"));
         piecePositions.put("H1", new Rook("white"));
-        for(byte i = 0; i < 8; i++) {
-            char letter = (char)('A' + (char)i);
+        for (byte i = 0; i < 8; i++) {
+            char letter = (char) ('A' + (char) i);
             piecePositions.put(letter + "7", new Pawn("black"));
             piecePositions.put(letter + "2", new Pawn("white"));
         }
     }
+
     public static void movePiece(String current, String newPosition, ChessPiece piece) {
         piecePositions.remove(current);
         piecePositions.put(newPosition, piece);
     }
+
     protected static String charArrToString(char[] arr) {
-        return arr[0]+""+arr[1];
+        return arr[0] + "" + arr[1];
     }
+
     protected static char[] stringToCharArr(String s) {
         return s.toCharArray();
     }
+
     protected static boolean isValidMove(char[] newPosition, String side) {
-        if(newPosition[0] < 'A' || newPosition[0] > 'H' || newPosition[1] < '1' || newPosition[1] > '8') {
+        if (newPosition[0] < 'A' || newPosition[0] > 'H' || newPosition[1] < '1' || newPosition[1] > '8') {
             return false;
         }
-        if(piecePositions.get(newPosition[0]+""+newPosition[1]) != null) {
-            ChessPiece pieceOnLocation = piecePositions.get(newPosition[0]+""+newPosition[1]);
+        if (piecePositions.get(newPosition[0] + "" + newPosition[1]) != null) {
+            ChessPiece pieceOnLocation = piecePositions.get(newPosition[0] + "" + newPosition[1]);
             return pieceOnLocation.getSide().equals(side) ? false : true;
         }
         return true;
     }
+
     protected static boolean isEnemyPieceHere(char[] newPosition, String side) {
-        ChessPiece pieceOnLocation = piecePositions.get(newPosition[0]+""+newPosition[1]);
-        if(pieceOnLocation == null) return false;
+        ChessPiece pieceOnLocation = piecePositions.get(newPosition[0] + "" + newPosition[1]);
+        if (pieceOnLocation == null) return false;
         return pieceOnLocation.getSide().equals(side) ? false : true;
     }
+
     protected static boolean isAnyPieceHere(char[] newPosition) {
-        ChessPiece pieceOnLocation = piecePositions.get(newPosition[0]+""+newPosition[1]);
-        if(pieceOnLocation == null) return false;
+        ChessPiece pieceOnLocation = piecePositions.get(newPosition[0] + "" + newPosition[1]);
+        if (pieceOnLocation == null) return false;
         return true;
     }
 }

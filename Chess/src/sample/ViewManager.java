@@ -29,6 +29,7 @@ public class ViewManager {
         // Initialize the board with pieces in all positions.
         Node chessboard = ChessBoard.createBoard(HEIGHT, 0 ,0);
         mainPane.getChildren().add(chessboard);
+        mainPane.getChildren().add(ChessBoard.placePieces(HEIGHT,0,0));
      //   createButtons();
      //   createBoard();
     }

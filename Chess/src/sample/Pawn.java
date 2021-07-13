@@ -15,7 +15,7 @@ public class Pawn extends ChessPiece {
         char[] activePosition = current.toCharArray();
         if(getSide().equalsIgnoreCase("white")) {
             // Is the pawn in the initial position?
-            if(activePosition[1] == '2' && !isAnyPieceHere(new char[] {activePosition[0], (char)(activePosition[1] + 2)})) {
+            if(activePosition[1] == '2' && !isAnyPieceHere(new char[] {activePosition[0], (char)(activePosition[1] + 2)}) && !isAnyPieceHere(new char[] {activePosition[0], (char)(activePosition[1] + 1)})) {
                 if(isValidMove(new char[] {activePosition[0], (char)(activePosition[1] + 2)},getSide())) toReturn.add(activePosition[0] + "" + (char)(activePosition[1] + 2));
             }
             if(!isAnyPieceHere(new char[] {activePosition[0], (char)(activePosition[1] + 1)})) {
@@ -24,7 +24,7 @@ public class Pawn extends ChessPiece {
 
         } else {
             // Is the pawn in the initial position?
-            if(activePosition[1] == '7' && !isAnyPieceHere(new char[] {activePosition[0], (char)(activePosition[1] - 2)})) {
+            if(activePosition[1] == '7' && !isAnyPieceHere(new char[] {activePosition[0], (char)(activePosition[1] - 2)}) && !isAnyPieceHere(new char[] {activePosition[0], (char)(activePosition[1] - 1)}) ) {
                 if(isValidMove(new char[] {activePosition[0], (char)(activePosition[1] - 2)},getSide())) toReturn.add(activePosition[0] + "" + (char)(activePosition[1] - 2));
             }
             if(!isAnyPieceHere(new char[] {activePosition[0], (char)(activePosition[1] - 1)})) {
