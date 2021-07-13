@@ -25,6 +25,7 @@ public class ChessBoard {
     private static final int COLUMNS = 8;
 
     static String[][] chessBoard = new String[ROWS][COLUMNS];
+    private static HashMap<String, Button> buttonInPosition = new HashMap<>();
 
     public static Node createBoard(double side, double x, double y) {
         // Create a group to which all board elements will be added as children of.
@@ -85,8 +86,6 @@ public class ChessBoard {
                 System.out.println(position);
                 ChessPiece pieceAtPosition = ChessPiece.getPiecePositions().get(position);
                 if(pieceAtPosition == null) continue;
-                HashMap<Button, ChessPiece> dic = new HashMap<>();
-
                 if(pieceAtPosition instanceof Pawn) {
                     System.out.println("HERE");
 
@@ -102,7 +101,7 @@ public class ChessBoard {
                     button.setLayoutX(x + (side * 0.025) + (i * sizeOfEachTile));
                     button.setLayoutY(x + (side * 0.025) + (j * sizeOfEachTile));
                     pieces.getChildren().add(button);
-                    dic.put(button, pieceAtPosition);
+                    buttonInPosition.put(position, button);
                     button.setOnMouseEntered(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent mouseEvent) {
@@ -226,7 +225,8 @@ public class ChessBoard {
                                         button.setLayoutX(hLight.getLayoutX());
                                         button.setLayoutY(hLight.getLayoutY());
                                         subpieces.getChildren().clear();
-                                        System.out.println(pieces.getChildren());
+                                        System.out.println(move);
+                                        System.out.println(pieces.getChildren().remove(buttonInPosition.get(move)));
                                     }
                                 });
                                 subpieces.getChildren().add(hLight);
