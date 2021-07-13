@@ -88,8 +88,6 @@ public class ChessBoard {
                 if (pieceAtPosition == null) continue;
                 // Give the given button the appropriate characteristics for the piece it is.
 
-                if (!(pieceAtPosition instanceof Bishop) && !(pieceAtPosition instanceof King) &&  !(pieceAtPosition instanceof Pawn) && !(pieceAtPosition instanceof Rook)  && !(pieceAtPosition instanceof Knight)) continue;
-
                 pieceAtPosition.CurrentPosition = position;
 
 
@@ -122,7 +120,7 @@ public class ChessBoard {
                         ArrayList<String> moves = new ArrayList<>();
 
                         subpieces.getChildren().clear();
-                        Paint c = Color.hsb(270, 1.0, 1.0, 0.3);
+                        Paint c = Color.rgb(255, 236, 57, 0.3);
                         if (pieceAtPosition instanceof Pawn) {
                             Pawn pawnTmp = (Pawn) pieceAtPosition;
                             moves = pawnTmp.getAcceptableMovements(pawnTmp.CurrentPosition);
@@ -137,6 +135,9 @@ public class ChessBoard {
                             moves = knightTmp.getAcceptableMovements(knightTmp.CurrentPosition);
                         } else if (pieceAtPosition instanceof King) {
                             King knightTmp = (King) pieceAtPosition;
+                            moves = knightTmp.getAcceptableMovements(knightTmp.CurrentPosition);
+                        } else {
+                            Queen knightTmp = (Queen) pieceAtPosition;
                             moves = knightTmp.getAcceptableMovements(knightTmp.CurrentPosition);
                         }
                         ArrayList<String> finalMoves = moves;
