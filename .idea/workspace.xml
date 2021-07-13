@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="330a9c18-2fb6-4e94-af7b-8ddb66223206" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chess/src/Rook.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chess/src/sample/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/Bishop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chess/src/sample/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/ChessBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chess/src/sample/ChessPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/ChessPiece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chess/src/sample/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/King.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chess/src/sample/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/Knight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chess/src/sample/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/Pawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chess/src/sample/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/Queen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chess/src/sample/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/Rook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/Rook.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ChessPiece.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ChessPiece.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/Knight.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/Knight.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

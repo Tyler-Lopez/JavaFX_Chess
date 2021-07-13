@@ -78,4 +78,14 @@ public class ChessPiece {
         }
         return true;
     }
+    protected static boolean isEnemyPieceHere(char[] newPosition, String side) {
+        ChessPiece pieceOnLocation = piecePositions.get(newPosition[0]+""+newPosition[1]);
+        if(pieceOnLocation == null) return false;
+        return pieceOnLocation.getSide().equals(side) ? false : true;
+    }
+    protected static boolean isAnyPieceHere(char[] newPosition) {
+        ChessPiece pieceOnLocation = piecePositions.get(newPosition[0]+""+newPosition[1]);
+        if(pieceOnLocation == null) return false;
+        return true;
+    }
 }
