@@ -12,7 +12,7 @@ public class ChessPiece {
 
     }
     public ChessPiece(String side) {
-
+        this.side = side;
     }
     public void setSide(String side) {
         this.side = side;
@@ -59,24 +59,22 @@ public class ChessPiece {
         for(byte i = 0; i < 8; i++) {
             char letter = (char)('A' + (char)i);
             piecePositions.put(letter + "7", new Pawn("black"));
-            piecePositions.put(letter + "2", new Pawn("whites"));
+            piecePositions.put(letter + "2", new Pawn("white"));
         }
     }
-    protected static String byteArrToString(byte[] arr) {
-        char letter = (char)('A' + (char)arr[0]);
-        return letter + "" + arr[1];
+    protected static String charArrToString(char[] arr) {
+        return arr[0]+""+arr[1];
     }
-    protected static byte[] stringToByteArr(String s) {
-        char[] cArr = s.toCharArray();
-        return new byte[] { Byte.valueOf(String.valueOf(cArr[0])), Byte.valueOf(String.valueOf(cArr[1])) };
+    protected static char[] stringToCharArr(String s) {
+        return s.toCharArray();
     }
-    protected static boolean isValidMove(byte[] newPosition, String side) {
-        if(newPosition[0] < 0 || newPosition[0] > 7 || newPosition[1] < 0 || newPosition[1] > 7) {
+    protected static boolean isValidMove(char[] newPosition, String side) {
+        if(newPosition[0] < 'A' || newPosition[0] > 'H' || newPosition[1] < '1' || newPosition[1] > '8') {
             return false;
         }
-        if(piecePositions.get(byteArrToString(newPosition)) != null) {
-            ChessPiece pieceOnLocation = piecePositions.get(byteArrToString(newPosition));
-            return pieceOnLocation.getSide() == side ? false : true;
+        if(piecePositions.get(newPosition[0]+""+newPosition[1]) != null) {
+            ChessPiece pieceOnLocation = piecePositions.get(newPosition[0]+""+newPosition[1]);
+            return pieceOnLocation.getSide().equals(side) ? false : true;
         }
         return true;
     }
