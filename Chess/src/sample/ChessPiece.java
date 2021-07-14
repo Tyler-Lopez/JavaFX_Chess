@@ -81,6 +81,10 @@ public class ChessPiece {
         piecePositions.put(newPosition, piece);
         return toReturn;
     }
+    public static void promotePawn(String current, String side) {
+        piecePositions.remove(current);
+        piecePositions.put(current, new Queen(side));
+    }
 
     protected static String charArrToString(char[] arr) {
         return arr[0] + "" + arr[1];

@@ -104,11 +104,11 @@ public class ChessBoard {
             for (int j = 0; j < 8; j++) {
                 String position = returnActivePosition(new byte[]{(byte) i, (byte) (j + 1)});
                 System.out.println(position);
-                ChessPiece pieceAtPosition = ChessPiece.getPiecePositions().get(position);
-                if (pieceAtPosition == null) continue;
+                final ChessPiece[] pieceAtPosition = {ChessPiece.getPiecePositions().get(position)};
+                if (pieceAtPosition[0] == null) continue;
                 // Give the given button the appropriate characteristics for the piece it is.
 
-                pieceAtPosition.CurrentPosition = position;
+                pieceAtPosition[0].CurrentPosition = position;
 
 
                 Button button = new Button();
@@ -119,12 +119,12 @@ public class ChessBoard {
 
                 button.setFont(new Font("Verdana", 30));
 
-                if (pieceAtPosition.getSide().equalsIgnoreCase("white")) button.setTextFill(Paint.valueOf("WHITE"));
+                if (pieceAtPosition[0].getSide().equalsIgnoreCase("white")) button.setTextFill(Paint.valueOf("WHITE"));
                 button.setLayoutX(x + (side * 0.025) + (i * sizeOfEachTile));
                 button.setLayoutY(x + (side * 0.025) + (j * sizeOfEachTile));
                 // Handle Image Generation
-                Image image = new Image(new FileInputStream("Chess/src/images/"+pieceAtPosition.getSide()+"_"+pieceAtPosition.getSymbol()+".png"));
-                ImageView imageView = new ImageView(image);
+                final Image[] image = {new Image(new FileInputStream("Chess/src/images/" + pieceAtPosition[0].getSide() + "_" + pieceAtPosition[0].getSymbol() + ".png"))};
+                final ImageView[] imageView = {new ImageView(image[0])};
                 //     if (pieceAtPosition instanceof Pawn) {
 
                 //   }
@@ -132,14 +132,14 @@ public class ChessBoard {
                 buttonInPosition.put(position, button);
                 System.out.println(sizeOfEachTile);
                 double tempDouble = sizeOfEachTile;
-                imageView.setFitWidth(tempDouble);
-                imageView.setFitHeight(tempDouble);
+                imageView[0].setFitWidth(tempDouble);
+                imageView[0].setFitHeight(tempDouble);
                 System.out.println(sizeOfEachTile);
 
-                imageView.setX(x + (side * 0.025) + (i * sizeOfEachTile));
-                imageView.setY(x + (side * 0.025) + (j * sizeOfEachTile));
-                pieces.getChildren().add(imageView);
-                imagesInPosition.put(position, imageView);
+                imageView[0].setX(x + (side * 0.025) + (i * sizeOfEachTile));
+                imageView[0].setY(x + (side * 0.025) + (j * sizeOfEachTile));
+                pieces.getChildren().add(imageView[0]);
+                imagesInPosition.put(position, imageView[0]);
                 button.setOnMouseEntered(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
@@ -160,23 +160,23 @@ public class ChessBoard {
 
                         subpieces.getChildren().clear();
                         Paint c = Color.rgb(255, 236, 57, 0.3);
-                        if (pieceAtPosition instanceof Pawn) {
-                            Pawn pawnTmp = (Pawn) pieceAtPosition;
+                        if (pieceAtPosition[0] instanceof Pawn) {
+                            Pawn pawnTmp = (Pawn) pieceAtPosition[0];
                             moves = pawnTmp.getAcceptableMovements(pawnTmp.CurrentPosition);
-                        } else if (pieceAtPosition instanceof Knight) {
-                            Knight knightTmp = (Knight) pieceAtPosition;
+                        } else if (pieceAtPosition[0] instanceof Knight) {
+                            Knight knightTmp = (Knight) pieceAtPosition[0];
                             moves = knightTmp.getAcceptableMovements(knightTmp.CurrentPosition);
-                        } else if (pieceAtPosition instanceof Rook) {
-                            Rook knightTmp = (Rook) pieceAtPosition;
+                        } else if (pieceAtPosition[0] instanceof Rook) {
+                            Rook knightTmp = (Rook) pieceAtPosition[0];
                             moves = knightTmp.getAcceptableMovements(knightTmp.CurrentPosition);
-                        } else if (pieceAtPosition instanceof Bishop) {
-                            Bishop knightTmp = (Bishop) pieceAtPosition;
+                        } else if (pieceAtPosition[0] instanceof Bishop) {
+                            Bishop knightTmp = (Bishop) pieceAtPosition[0];
                             moves = knightTmp.getAcceptableMovements(knightTmp.CurrentPosition);
-                        } else if (pieceAtPosition instanceof King) {
-                            King knightTmp = (King) pieceAtPosition;
+                        } else if (pieceAtPosition[0] instanceof King) {
+                            King knightTmp = (King) pieceAtPosition[0];
                             moves = knightTmp.getAcceptableMovements(knightTmp.CurrentPosition);
                         } else {
-                            Queen knightTmp = (Queen) pieceAtPosition;
+                            Queen knightTmp = (Queen) pieceAtPosition[0];
                             moves = knightTmp.getAcceptableMovements(knightTmp.CurrentPosition);
                         }
                         ArrayList<String> finalMoves = moves;
@@ -196,28 +196,46 @@ public class ChessBoard {
                                 @Override
                                 public void handle(MouseEvent mouseEvent) {
                                     // DEBUG TEXT
-                                    System.out.println("Position:" + pieceAtPosition.CurrentPosition + "move" + move);
+                                    System.out.println("Position:" + pieceAtPosition[0].CurrentPosition + "move" + move);
                                     // Invoke the static movePiece method of ChessPiece class.
-                                    System.out.println(ChessPiece.movePiece(pieceAtPosition.CurrentPosition, move, pieceAtPosition));
+                                    System.out.println(ChessPiece.movePiece(pieceAtPosition[0].CurrentPosition, move, pieceAtPosition[0]));
                                     System.out.println(pieces.getChildren().remove(buttonInPosition.get(move)));
                                     System.out.println(pieces.getChildren().remove(imagesInPosition.get(move)));
 
-                                    buttonInPosition.remove(pieceAtPosition.CurrentPosition);
+                                    buttonInPosition.remove(pieceAtPosition[0].CurrentPosition);
 
-                                    imagesInPosition.remove(pieceAtPosition.CurrentPosition);
+                                    imagesInPosition.remove(pieceAtPosition[0].CurrentPosition);
                                     imagesInPosition.remove(move);
+                                    System.out.println(move.toCharArray()[1] + "here");
 
-                                    pieceAtPosition.CurrentPosition = move;
-                                    imageView.setX(xShift);
-                                    imageView.setY(yShift);
-                                    //   pieces.getChildren().add(image);
-                                    button.setLayoutX(hLight.getLayoutX());
-                                    button.setLayoutY(hLight.getLayoutY());
-                                    imagesInPosition.put(pieceAtPosition.CurrentPosition, imageView);
-                                    buttonInPosition.put(pieceAtPosition.CurrentPosition, button);
+                                    if(pieceAtPosition[0] instanceof Pawn && (move.toCharArray()[1]=='1' || move.toCharArray()[1]=='8')) {
+                                        pieces.getChildren().remove(imageView[0]);
+                                        System.out.println("HERE");
+                                        ChessPiece.promotePawn(move, pieceAtPosition[0].getSide());
+                                        pieceAtPosition[0] = ChessPiece.getPiecePositions().get(move);
+                                        try {
+                                            imageView[0] = new ImageView(new Image(new FileInputStream("Chess/src/images/"+ pieceAtPosition[0].getSide()+"_Q.png")));
+                                        } catch (FileNotFoundException e) {
+                                            e.printStackTrace();
+                                        }
+                                        imageView[0].setX(xShift);
+                                        imageView[0].setY(yShift);
+                                        imageView[0].setFitHeight(sizeOfEachTile);
+                                        imageView[0].setFitWidth(sizeOfEachTile);
+                                        pieces.getChildren().add(imageView[0]);
 
-                                    subpieces.getChildren().clear();
-                                    System.out.println(move);
+                                    }
+                                        pieceAtPosition[0].CurrentPosition = move;
+                                        imageView[0].setX(xShift);
+                                        imageView[0].setY(yShift);
+                                        //   pieces.getChildren().add(image);
+                                        button.setLayoutX(hLight.getLayoutX());
+                                        button.setLayoutY(hLight.getLayoutY());
+                                        imagesInPosition.put(pieceAtPosition[0].CurrentPosition, imageView[0]);
+                                        buttonInPosition.put(pieceAtPosition[0].CurrentPosition, button);
+
+                                        subpieces.getChildren().clear();
+                                        System.out.println(move);
 
                                     // System.out.println(pieces.getChildren().remove(buttonInPosition.get(move)));
                                 }
