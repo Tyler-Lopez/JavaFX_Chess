@@ -30,7 +30,7 @@ public class ChessBoard {
     public static HashMap<String, Button> buttonInPosition = new HashMap<>();
     public static HashMap<String, ImageView> imagesInPosition = new HashMap<>();
 
-    public static Node createBoard(double side, double x, double y) {
+    public static Node createBoard(double side, double x, double y) throws FileNotFoundException {
         // Create a group to which all board elements will be added as children of.
         Group board = new Group();
         // Initialize an array which will be used to put all highlighted squares, finally made a child of board at the end of the method.
@@ -45,9 +45,15 @@ public class ChessBoard {
         Stop[] stopsDark = new Stop[]{new Stop(0, Color.web("#b48866")), new Stop(1, Color.web("#977052"))};
         LinearGradient darkBG = new LinearGradient(1, 1, 1, 0, true, CycleMethod.NO_CYCLE, stopsDark);
 
+        Image image = new Image(new FileInputStream("Chess/src/images/wood.png"));
+        ImageView imageView = new ImageView(image);
+        imageView.setX(x);
+        imageView.setY(y);
+        imageView.setFitWidth(side);
+        imageView.setFitHeight(side);
         // The black gradient border of the chessboard
-        Rectangle backDrop = createRectangle(side, x, y, lg1);
-        board.getChildren().add(backDrop);
+       // Rectangle backDrop = createRectangle(side, x, y, lg1);
+        board.getChildren().add(imageView);
 
         double sizeOfEachTile = ((side * 0.95) / chessBoard.length);
 
