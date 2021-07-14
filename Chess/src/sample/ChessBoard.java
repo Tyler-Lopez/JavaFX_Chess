@@ -64,13 +64,24 @@ public class ChessBoard {
                 double xShift = x + (side * 0.025) + (i * sizeOfEachTile);
                 double yShift = x + (side * 0.025) + (j * sizeOfEachTile);
                 Rectangle tile = createRectangle(sizeOfEachTile, xShift, yShift, color);
-                Text position = new Text(returnActivePosition(new byte[]{(byte) i, (byte) (j + 1)}));
-                position.setLayoutX(xShift + sizeOfEachTile * 0.05);
-                position.setLayoutY(yShift + sizeOfEachTile * 0.95);
-                position.setFont(new Font("Verdana", 15));
-                position.setFill(color == lightBG ? darkBG : lightBG);
                 board.getChildren().add(tile);
-                board.getChildren().add(position);
+                if(i==0) {
+                    Text position = new Text(String.valueOf(j + 1));
+                    position.setX(xShift + sizeOfEachTile * 0.05);
+                    position.setY(yShift + sizeOfEachTile * 0.25);
+                    position.setFont(new Font("Verdana", 25));
+                    position.setFill(color == lightBG ? darkBG : lightBG);
+
+                    board.getChildren().add(position);
+                }
+                if(j==7) {
+                    Text position2 = new Text(String.valueOf(returnActivePosition(new byte[]{(byte) i, (byte) (j + 1)}).toCharArray()[0]));
+                    position2.setX(xShift + sizeOfEachTile * 0.75);
+                    position2.setY(yShift + sizeOfEachTile * 0.95);
+                    position2.setFont(new Font("Verdana", 25));
+                    position2.setFill(color == lightBG ? darkBG : lightBG);
+                    board.getChildren().add(position2);
+                }
             }
         }
         // Iterate through each highlighted rectangle in recArr and plonk it on last.
@@ -83,8 +94,8 @@ public class ChessBoard {
         Group subpieces = new Group();
         double sizeOfEachTile = ((side * 0.95) / chessBoard.length);
 
-        for (int i = 0; i < chessBoard.length; i++) {
-            for (int j = 0; j < chessBoard[0].length; j++) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
                 String position = returnActivePosition(new byte[]{(byte) i, (byte) (j + 1)});
                 System.out.println(position);
                 ChessPiece pieceAtPosition = ChessPiece.getPiecePositions().get(position);
@@ -109,19 +120,25 @@ public class ChessBoard {
                 Image image = new Image(new FileInputStream("Chess/src/images/"+pieceAtPosition.getSide()+"_"+pieceAtPosition.getSymbol()+".png"));
                 ImageView imageView = new ImageView(image);
                 //     if (pieceAtPosition instanceof Pawn) {
-                imageView.setFitWidth(sizeOfEachTile);
-                imageView.setFitHeight(sizeOfEachTile);
+
+                //   }
+                pieces.getChildren().add(button);
+                buttonInPosition.put(position, button);
+                System.out.println(sizeOfEachTile);
+                double tempDouble = sizeOfEachTile;
+                imageView.setFitWidth(tempDouble);
+                imageView.setFitHeight(tempDouble);
+                System.out.println(sizeOfEachTile);
+
                 imageView.setX(x + (side * 0.025) + (i * sizeOfEachTile));
                 imageView.setY(x + (side * 0.025) + (j * sizeOfEachTile));
                 pieces.getChildren().add(imageView);
                 imagesInPosition.put(position, imageView);
-                //   }
-                pieces.getChildren().add(button);
-                buttonInPosition.put(position, button);
                 button.setOnMouseEntered(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
                         button.setBackground(new Background(new BackgroundFill(Color.hsb(270, 1.0, 1.0, 0.2), CornerRadii.EMPTY, Insets.EMPTY)));
+
                     }
                 });
                 button.setOnMouseExited(new EventHandler<MouseEvent>() {

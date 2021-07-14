@@ -2,9 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="330a9c18-2fb6-4e94-af7b-8ddb66223206" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Chess/src/images/13-130557_chess-pieces-images-png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Chess/src/images/142-1421250_set-of-chess-pieces-chess-pieces-3d-max.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Chess/src/images/292-2922019_alternative-views-white-chess-pieces-png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Chess/src/images/311-3117101_chess-pieces-png-transparent-png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Chess/src/images/48-488771_king-set-staunton-chessboard-chess-piece-clipart-chess.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Chess/src/images/58c7f136e665570916c653f0.png.crdownload" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Chess/src/images/chess-39290.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Chess/src/images/free-png-download-chess-png-images-background-png-images-chess-pieces-transparent-11563122101gwkhi3uac2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Chess/src/images/kisspng-chess-piece-staunton-chess-set-chessboard-king-chess-png-5b1daf745dc8d6.9438233415286721163842.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Chess/src/images/png-clipart-chess-piece-staunton-chess-set-chessboard-tablero-de-juego-chess-game-king.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/images/black_B.png" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/images/black_B.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/images/black_K.png" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/images/black_K.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/images/black_N.png" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/images/black_N.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/images/black_P.png" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/images/black_P.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/images/black_Q.png" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/images/black_Q.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/images/black_R.png" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/images/black_R.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/images/white_B.png" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/images/white_B.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/images/white_K.png" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/images/white_K.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/images/white_N.png" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/images/white_N.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/images/white_P.png" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/images/white_P.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/images/white_Q.png" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/images/white_Q.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess/src/images/white_R.png" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/images/white_R.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chess/src/sample/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chess/src/sample/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chess/src/sample/ViewManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/black_B.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/black_B.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/black_K.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/black_K.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/white_B.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/white_B.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/white_K.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/white_K.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/white_N.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/white_N.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/white_P.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/white_P.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/white_Q.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/white_Q.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/white_R.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/images/white_R.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ChessBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ChessBoard$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ChessBoard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ChessBoard$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ChessBoard$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ChessBoard$3$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ChessBoard$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ChessBoard$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ChessBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX_Chess/sample/ChessBoard.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,11 +56,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1v5d4nSlYCwCA5rNCx2Gm5sfwON" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -98,5 +135,8 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
