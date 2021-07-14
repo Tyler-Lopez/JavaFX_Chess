@@ -16,6 +16,8 @@ import javafx.scene.paint.*;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.*;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -26,6 +28,7 @@ public class ChessBoard {
 
     static String[][] chessBoard = new String[ROWS][COLUMNS];
     public static HashMap<String, Button> buttonInPosition = new HashMap<>();
+    public static HashMap<String, ImageView> imagesInPosition = new HashMap<>();
 
     public static Node createBoard(double side, double x, double y) {
         // Create a group to which all board elements will be added as children of.
@@ -75,7 +78,7 @@ public class ChessBoard {
         return board;
     }
 
-    public static Group placePieces(double side, double x, double y) {
+    public static Group placePieces(double side, double x, double y) throws FileNotFoundException {
         Group pieces = new Group();
         Group subpieces = new Group();
         double sizeOfEachTile = ((side * 0.95) / chessBoard.length);
@@ -95,11 +98,24 @@ public class ChessBoard {
                 button.setMinWidth(sizeOfEachTile);
                 button.setMinHeight(sizeOfEachTile);
                 button.setBackground(Background.EMPTY);
-                button.setText(pieceAtPosition.getSymbol() + "");
-                button.setFont(new Font("Verdana", 20));
+             //   button.setText(pieceAtPosition.getSymbol() + "");
+
+                button.setFont(new Font("Verdana", 30));
+
                 if (pieceAtPosition.getSide().equalsIgnoreCase("white")) button.setTextFill(Paint.valueOf("WHITE"));
                 button.setLayoutX(x + (side * 0.025) + (i * sizeOfEachTile));
                 button.setLayoutY(x + (side * 0.025) + (j * sizeOfEachTile));
+                // Handle Image Generation
+                Image image = new Image(new FileInputStream("Chess/src/images/"+pieceAtPosition.getSide()+"_"+pieceAtPosition.getSymbol()+".png"));
+                ImageView imageView = new ImageView(image);
+                //     if (pieceAtPosition instanceof Pawn) {
+                imageView.setFitWidth(sizeOfEachTile*1.05);
+                imageView.setFitHeight(sizeOfEachTile*1.05);
+                imageView.setX(x + (side * 0.025) + (i * sizeOfEachTile) - (0.01 * sizeOfEachTile));
+                imageView.setY(x + (side * 0.025) + (j * sizeOfEachTile) - (0.2 * sizeOfEachTile));
+                pieces.getChildren().add(imageView);
+                imagesInPosition.put(position, imageView);
+                //   }
                 pieces.getChildren().add(button);
                 buttonInPosition.put(position, button);
                 button.setOnMouseEntered(new EventHandler<MouseEvent>() {
@@ -160,19 +176,27 @@ public class ChessBoard {
                                     System.out.println("Position:" + pieceAtPosition.CurrentPosition + "move" + move);
                                     // Invoke the static movePiece method of ChessPiece class.
                                     System.out.println(ChessPiece.movePiece(pieceAtPosition.CurrentPosition, move, pieceAtPosition));
-                                    System.out.println("JUST AFTER REMOVER");
-                              //      pieces.getChildren().remove(buttonInPosition.get(pieceAtPosition.CurrentPosition));
-                                   System.out.println(pieces.getChildren().remove(buttonInPosition.get(move)));
+                                    System.out.println(pieces.getChildren().remove(buttonInPosition.get(move)));
+                                    System.out.println(pieces.getChildren().remove(imagesInPosition.get(move)));
+
                                     buttonInPosition.remove(pieceAtPosition.CurrentPosition);
+
+                                    imagesInPosition.remove(pieceAtPosition.CurrentPosition);
+                                    imagesInPosition.remove(move);
+
                                     pieceAtPosition.CurrentPosition = move;
+                                    imageView.setX(xShift - (0.01 * sizeOfEachTile));
+                                    imageView.setY(yShift - (0.2 * sizeOfEachTile));
+                                    //   pieces.getChildren().add(image);
                                     button.setLayoutX(hLight.getLayoutX());
                                     button.setLayoutY(hLight.getLayoutY());
+                                    imagesInPosition.put(pieceAtPosition.CurrentPosition, imageView);
                                     buttonInPosition.put(pieceAtPosition.CurrentPosition, button);
 
                                     subpieces.getChildren().clear();
                                     System.out.println(move);
 
-                                   // System.out.println(pieces.getChildren().remove(buttonInPosition.get(move)));
+                                    // System.out.println(pieces.getChildren().remove(buttonInPosition.get(move)));
                                 }
                             });
                             subpieces.getChildren().add(hLight);

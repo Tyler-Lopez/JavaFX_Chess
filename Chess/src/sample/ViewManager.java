@@ -12,16 +12,18 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
+import java.io.FileNotFoundException;
+
 public class ViewManager {
     private AnchorPane mainPane; // A Pane is a container class.
     private Scene mainScene;
     private Stage mainStage;
 
-    private static final double HEIGHT = 500;
-    private static final double WIDTH = 500;
+    private static final double HEIGHT = 1000;
+    private static final double WIDTH = 1000;
     int count = 0;
 
-    public ViewManager() {
+    public ViewManager() throws FileNotFoundException {
         mainPane = new AnchorPane();
         mainStage = new Stage();
         mainScene = new Scene(mainPane, WIDTH, HEIGHT);
