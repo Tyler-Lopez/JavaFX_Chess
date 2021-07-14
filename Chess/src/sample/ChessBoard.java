@@ -109,10 +109,10 @@ public class ChessBoard {
                 Image image = new Image(new FileInputStream("Chess/src/images/"+pieceAtPosition.getSide()+"_"+pieceAtPosition.getSymbol()+".png"));
                 ImageView imageView = new ImageView(image);
                 //     if (pieceAtPosition instanceof Pawn) {
-                imageView.setFitWidth(sizeOfEachTile*1.05);
-                imageView.setFitHeight(sizeOfEachTile*1.05);
-                imageView.setX(x + (side * 0.025) + (i * sizeOfEachTile) - (0.01 * sizeOfEachTile));
-                imageView.setY(x + (side * 0.025) + (j * sizeOfEachTile) - (0.2 * sizeOfEachTile));
+                imageView.setFitWidth(sizeOfEachTile);
+                imageView.setFitHeight(sizeOfEachTile);
+                imageView.setX(x + (side * 0.025) + (i * sizeOfEachTile));
+                imageView.setY(x + (side * 0.025) + (j * sizeOfEachTile));
                 pieces.getChildren().add(imageView);
                 imagesInPosition.put(position, imageView);
                 //   }
@@ -185,8 +185,8 @@ public class ChessBoard {
                                     imagesInPosition.remove(move);
 
                                     pieceAtPosition.CurrentPosition = move;
-                                    imageView.setX(xShift - (0.01 * sizeOfEachTile));
-                                    imageView.setY(yShift - (0.2 * sizeOfEachTile));
+                                    imageView.setX(xShift);
+                                    imageView.setY(yShift);
                                     //   pieces.getChildren().add(image);
                                     button.setLayoutX(hLight.getLayoutX());
                                     button.setLayoutY(hLight.getLayoutY());

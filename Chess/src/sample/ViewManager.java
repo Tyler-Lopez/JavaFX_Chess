@@ -1,13 +1,14 @@
 package sample;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Paint;
+import javafx.scene.layout.*;
+import javafx.scene.paint.*;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -15,7 +16,7 @@ import javafx.scene.control.Button;
 import java.io.FileNotFoundException;
 
 public class ViewManager {
-    private AnchorPane mainPane; // A Pane is a container class.
+    private StackPane mainPane; // A Pane is a container class.
     private Scene mainScene;
     private Stage mainStage;
 
@@ -24,10 +25,16 @@ public class ViewManager {
     int count = 0;
 
     public ViewManager() throws FileNotFoundException {
-        mainPane = new AnchorPane();
+        mainPane = new StackPane();
+        Stop[] stopsLight = new Stop[]{new Stop(0, Color.web("#5d472c")), new Stop(1, Color.web("#4c3e2c"))};
+        LinearGradient lightBG = new LinearGradient(1, 1, 1, 0, true, CycleMethod.NO_CYCLE, stopsLight);
+        mainPane.setBackground(new Background(new BackgroundFill(lightBG, CornerRadii.EMPTY, Insets.EMPTY)));
+        mainPane.setPrefSize(HEIGHT, WIDTH);
         mainStage = new Stage();
         mainScene = new Scene(mainPane, WIDTH, HEIGHT);
+
         mainStage.setScene(mainScene);
+
         // Initialize the board with pieces in all positions.
         Node chessboard = ChessBoard.createBoard(HEIGHT, 0 ,0);
         mainPane.getChildren().add(chessboard);
